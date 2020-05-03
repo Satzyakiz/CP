@@ -11,7 +11,7 @@ void printMatrix(vector<vector<int>> &mat){
 }
 //As we are filling from left to right, i.e. from 0...col, we only need to handle the left portion
 bool isSafe(vector<vector<int>> &mat,int row,int col){
-  //check left part
+  //check left part of the row
   for(int j=0; j<col; j++){
     if(mat[row][j]) return false;
   }
