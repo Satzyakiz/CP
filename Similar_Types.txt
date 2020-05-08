@@ -3,3 +3,7 @@
    ii) Equal Sum Partition
    iii) Count of subsets, each of whose sum is S.
         i.e. Count of equal Sum subset
+2) Unbounded Knapsack subproblems:
+  i) Rod cutting Problem
+  ii) Maximum Cut Segments
+  iii) Coin change and its variations.
