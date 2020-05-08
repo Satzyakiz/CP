@@ -1,0 +1,5 @@
+1) 0-1 Knapsack Problem Subproblems :
+   i)  Subset sum
+   ii) Equal Sum Partition
+   iii) Count of subsets, each of whose sum is S.
+        i.e. Count of equal Sum subset
