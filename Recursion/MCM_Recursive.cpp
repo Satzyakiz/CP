@@ -10,7 +10,7 @@ using namespace std;
 
 int solveMCM(vector<int> arr,int i,int j){
   if(i >= j) return 0;
-  int k,minVal=INF;
+  int k,minVal=INT_MAX;
   for(k=i; k<j; k++){
     int temp = solveMCM(arr,i,k) + solveMCM(arr,k+1,j)
                 + arr[i-1]*arr[k]*arr[j];
