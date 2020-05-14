@@ -7,3 +7,6 @@
   i) Rod cutting Problem
   ii) Maximum Cut Segments
   iii) Coin change and its variations.
+
+3) MCM:
+  i) Palindrome Partition
