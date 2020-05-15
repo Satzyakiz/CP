@@ -17,27 +17,33 @@ using namespace std;
 #define MOD 1000000000+7
 
 unordered_map<string,bool> um;
-bool isScramble(string a, string b) {
-          if(a.size() != b.size()) return false;
-          if(a == b) return true;
-          string newStr = a+"_"+b;
-          if(um.find(newStr) != um.end()) return um[newStr]; //If value already present in map
-          int n = a.size();
-          bool res = false;
-          for(int i=1; i<n; i++){
-            bool swap = isScramble(a.substr(0,i),b.substr(n-i,i)) == true
-                && isScramble(a.substr(i,n-i),b.substr(0,n-i)) == true;
-            bool noswap = isScramble(a.substr(0,i),b.substr(0,i)) == true
-                && isScramble(a.substr(i,n-i),b.substr(i,n-i)) == true;
-            if(swap || noswap){
-              res = true;
-              break;
-            }
-          }
-          um[newStr] = res;
-          return res;
-        }
 
+int eggDrop(int eggs,int floors){
+  if(floors == 0 || floors == 1) return floors;
+  if(eggs == 1) return floors;
+  vector<vector<int>> dp(eggs+1,vector<int> (floors+1));
+  //Initialization
+  for(int i=0; i<eggs+1; i++){
+    dp[i][0] = 0;
+    dp[i][1] = 1;
+  }
+  for(int j=0; j<floors+1; j++){
+    dp[1][j] = j; //If 1 egg is there, we would req j no of tries
+    //to determine the egg would break or not
+    //where j is the no of floors
+  }
+  int minVal = INT_MAX;
+  for(int i=2; i<eggs+1; i++){ // No of eggs at an instant
+    for(int j=2; j<floors+1; j++){ //Current max no of floors at an instant
+      dp[i][j] = INT_MAX;
+      for(int x=1; x<=j; x++){ //Current floor no upto j floors
+        int temp = 1 + max(dp[i-1][x-1],dp[i][j-x]);
+        dp[i][j] = min(temp,dp[i][j]);
+      }
+    }
+  }
+  return dp[eggs][floors];
+}
 
 int main(){
   ios_base::sync_with_stdio(false);
@@ -47,16 +53,12 @@ int main(){
   freopen("D:/CP/input.txt","r",stdin);
   freopen("D:/CP/output.txt","w",stdout);
   #endif
-  string s1,s2;
-  cin>>s1;
-  cin.ignore();
-  cin>>s2;
-
-  if(isScramble(s1,s2)){
-    cout<<"True";
-  }
-  else{
-    cout<<"False";
+  int t;
+  cin>>t;
+  while(t--){
+    int eggs,floors;
+    cin>>eggs>>floors;
+    cout<<eggDrop(eggs,floors)<<endl;
   }
   return 0;
 }

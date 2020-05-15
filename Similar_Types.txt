@@ -10,3 +10,5 @@
 
 3) MCM:
   i) Palindrome Partition
+  ii) Scrambled Strings
+  iii) Egg Dropping Problem

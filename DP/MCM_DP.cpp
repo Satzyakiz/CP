@@ -30,6 +30,8 @@ int mcm(vector<int> arr){
   return dp[1][n-1];
   //dp[1][n-1]: 0th row is unused as 1 matrix need not have a multiplication
   //at least 2 matrices are required for multiplication
+  // Also because n elements in arr indicate n-1 matrices
+  // Each matrix having dimensions of arr[i-1]*arr[i]
 }
 
 int main(){
