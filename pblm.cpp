@@ -16,35 +16,60 @@ using namespace std;
 #define NEG_INF INT_MIN
 #define MOD 1000000000+7
 
-unordered_map<string,bool> um;
-
-int eggDrop(int eggs,int floors){
-  if(floors == 0 || floors == 1) return floors;
-  if(eggs == 1) return floors;
-  vector<vector<int>> dp(eggs+1,vector<int> (floors+1));
-  //Initialization
-  for(int i=0; i<eggs+1; i++){
-    dp[i][0] = 0;
-    dp[i][1] = 1;
+void chandf(ll a, ll b, ll l, ll r){
+  vector<int> z(45,0);
+  vi AB(45,0);
+  vi lB(45,0);
+  vi rB(45,0);
+  ll x = a, y = b;
+  int i=0;
+  while(a){
+    AB[i++] = a%2;
+    a = a/2;
   }
-  for(int j=0; j<floors+1; j++){
-    dp[1][j] = j; //If 1 egg is there, we would req j no of tries
-    //to determine the egg would break or not
-    //where j is the no of floors
-  }
-  int minVal = INT_MAX;
-  for(int i=2; i<eggs+1; i++){ // No of eggs at an instant
-    for(int j=2; j<floors+1; j++){ //Current max no of floors at an instant
-      dp[i][j] = INT_MAX;
-      for(int x=1; x<=j; x++){ //Current floor no upto j floors
-        int temp = 1 + max(dp[i-1][x-1],dp[i][j-x]);
-        dp[i][j] = min(temp,dp[i][j]);
-      }
+  i = 0;
+  while(b){
+    if(!AB[i]){
+      AB[i] = b%2;
     }
+    i++;
+    b /= 2;
   }
-  return dp[eggs][floors];
+  // for(int a: AB) cout<<a<<" ";
+  i = 0;
+  while(l){
+    lB[i++] = l%2;
+    l /= 2;
+  }
+  i = 0;
+  while(r){
+    rB[i++] = r%2;
+    r /= 2;
+  }
+  int j = 44;
+  while(rB[j] == lB[j]){
+    z[j] = rB[j];
+    j--;
+  }
+  z[j--] = 0;
+  while(j > -1){
+    z[j] = AB[j];
+    j--;
+  }
+  // for(int a: z) cout<<a<<" ";
+  ll ans = 0;
+  for(int i=0; i<45; i++){
+    if(z[i] == 1)
+      ans += pow(2,i);
+  }
+  cout<<ans;
+  cout<<endl;
 }
-
+void solve(){
+  ll a,b,l,r;
+  cin>>a>>b>>l>>r;
+  chandf(a,b,l,r);
+}
 int main(){
   ios_base::sync_with_stdio(false);
   cin.tie(NULL);
@@ -56,9 +81,7 @@ int main(){
   int t;
   cin>>t;
   while(t--){
-    int eggs,floors;
-    cin>>eggs>>floors;
-    cout<<eggDrop(eggs,floors)<<endl;
+    solve();
   }
   return 0;
 }
