@@ -23,5 +23,5 @@ bool isCyclic(vector<vector<int>> adj,int V){ // V : no of vertices
     if(!visited[i] && cycle(adj,i,visited,rec))
       return true;
   }
-  return false
+  return false;
 }
