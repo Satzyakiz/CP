@@ -30,3 +30,28 @@ int diameterOfBinaryTree(TreeNode* root) {
         diameter(root,res);
         return res-1; //Important
     }
+//alternate Solution
+int height(TreeNode* root) {
+        if(root == nullptr){
+            return 0;
+        }
+        int ls = height(root->left);
+        int rs = height(root->right);
+        return 1+max(ls,rs);
+    }
+
+    int diameterOfBinaryTree(TreeNode* root) {
+        if(root == nullptr) {
+            return 0;
+        }
+        int hL = height(root->left);
+        int hR = height(root->right);
+        //Diameter passes through root
+        int option1 = hL+hR;
+        //Diameter lies in left subtree
+        int option2 = diameterOfBinaryTree(root->left);
+        //Diameter lies in right subtree
+        int option3 = diameterOfBinaryTree(root->right);
+		//return the best of these
+        return max(option1,max(option2,option3));
+    }
