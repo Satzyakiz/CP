@@ -16,59 +16,27 @@ using namespace std;
 #define NEG_INF INT_MIN
 #define MOD 1000000000+7
 
-void chandf(ll a, ll b, ll l, ll r){
-  vector<int> z(45,0);
-  vi AB(45,0);
-  vi lB(45,0);
-  vi rB(45,0);
-  ll x = a, y = b;
-  int i=0;
-  while(a){
-    AB[i++] = a%2;
-    a = a/2;
-  }
-  i = 0;
-  while(b){
-    if(!AB[i]){
-      AB[i] = b%2;
+int getAns(vi Alice, vi Bob){
+  int ans = 0,posA = 0,posB = 0;
+  int n = Alice.size();
+  for(int i=0; i<n; i++){
+    if(Alice[i] == Bob[i] && posA == posB){
+      ans += Alice[i];
     }
-    i++;
-    b /= 2;
+    posA += Alice[i];
+    posB += Bob[i];
   }
-  // for(int a: AB) cout<<a<<" ";
-  i = 0;
-  while(l){
-    lB[i++] = l%2;
-    l /= 2;
-  }
-  i = 0;
-  while(r){
-    rB[i++] = r%2;
-    r /= 2;
-  }
-  int j = 44;
-  while(rB[j] == lB[j]){
-    z[j] = rB[j];
-    j--;
-  }
-  z[j--] = 0;
-  while(j > -1){
-    z[j] = AB[j];
-    j--;
-  }
-  // for(int a: z) cout<<a<<" ";
-  ll ans = 0;
-  for(int i=0; i<45; i++){
-    if(z[i] == 1)
-      ans += pow(2,i);
-  }
-  cout<<ans;
-  cout<<endl;
+  return ans;
 }
 void solve(){
-  ll a,b,l,r;
-  cin>>a>>b>>l>>r;
-  chandf(a,b,l,r);
+  int n;
+  cin>>n;
+  vi Alice(n),Bob(n);
+  for(int i=0; i<n; i++)
+    cin>>Alice[i];
+  for(int i=0; i<n; i++)
+    cin>>Bob[i];
+  cout<<getAns(Alice,Bob)<<endl;
 }
 int main(){
   ios_base::sync_with_stdio(false);
