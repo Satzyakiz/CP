@@ -19,3 +19,23 @@ vector<vector<int>> subsetsWithDup(vector<int> &A) {
     ans.erase(unique(ans.begin(),ans.end()),ans.end());
     return ans;
 }
+
+
+//Self-solution --- Solution 2
+vector<vector<int>> ans;
+   void backtrack(vector<int>& nums,vector<int> tempAns,int s){
+       if(s == nums.size()){
+           ans.emplace_back(tempAns);
+           return;
+       }
+       backtrack(nums,tempAns,s+1);
+       tempAns.emplace_back(nums[s]);
+       backtrack(nums,tempAns,s+1);
+   }
+   vector<vector<int>> subsets(vector<int>& nums) {
+       vector<int> tempAns;
+       backtrack(nums,tempAns,0);
+       sort(ans.begin(),ans.end());
+       ans.erase(unique(ans.begin(),ans.end()),ans.end());
+       return ans;
+   }
