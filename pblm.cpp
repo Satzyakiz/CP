@@ -16,34 +16,29 @@ using namespace std;
 #define NEG_INF INT_MIN
 #define MOD 1000000000+7
 
-
-void solve(ll n){
-  vector<ll> arr(n);
-  for(int i=0; i<n; i++)
-    cin>>arr[i];
-  ll ans = arr[0]+1;
-  for(int i=1; i<n; i++){
-    if(arr[i] > arr[i-1]){
-      ans += (arr[i] - arr[i-1]) + 2;
-    }else if(arr[i] < arr[i-1]){
-      ans += (arr[i-1] - arr[i]) + 2;
-    }else{
-      ans += 2;
+void solve(){
+  string s;
+  cin>>s;
+  int best = 0, curr = 1;
+  for(int i=1; i<s.size(); i++){
+    if(s[i] != s[i-1]){
+      best = max(best,curr);
+      curr = 0;
     }
+    curr++;
   }
-
-  cout<<ans<<endl;
+  best = max(best,curr);
+  cout<<best<<endl;
 }
+
 int main(){
   ios_base::sync_with_stdio(false);
   cin.tie(NULL);
   cout.tie(NULL);
-  #ifndef ONLINE_JUDGE
-  freopen("D:/CP/input.txt","r",stdin);
-  freopen("D:/CP/output.txt","w",stdout);
-  #endif
-  ll n;
-  cin>>n;
-  solve(n);
+  // #ifndef ONLINE_JUDGE
+  // freopen("D:/CP/input.txt","r",stdin);
+  // freopen("D:/CP/output.txt","w",stdout);
+  // #endif
+  solve();
   return 0;
 }

@@ -21,7 +21,7 @@ int getNumber(vector<int> nums){
   int sum = 0;
   set<int> s;
   for(int x: nums) {
-    sums += x;
+    sum += x;
     s.insert(x);
   }
   int set_sum = 0;
