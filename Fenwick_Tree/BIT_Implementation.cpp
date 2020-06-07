@@ -30,13 +30,7 @@ void createBIT(vector<int> arr){
 }
 
 int main(){
-  ios_base::sync_with_stdio(false);
-  cin.tie(NULL);
-  cout.tie(NULL);
-  #ifndef ONLINE_JUDGE
-  freopen("D:/CP/input.txt","r",stdin);
-  freopen("D:/CP/output.txt","w",stdout);
-  #endif
+  
   vector<int> arr{1,3,2,-2,4,5};
   createBIT(arr);
   //Range Query
