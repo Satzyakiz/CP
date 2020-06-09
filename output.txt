@@ -1,9 +1,2 @@
-Sum between index 2 to 4:
-3
-Sum between index 1 to 6:
-13
-Sum between index 4 to 6:
-7
-After Point Update:
-Sum between index 1 to 6:
-18
+0
+68827160
