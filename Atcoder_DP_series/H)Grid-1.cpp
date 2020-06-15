@@ -1,3 +1,16 @@
+// There is a grid with HH horizontal rows and WW vertical columns.
+// Let (i,j)(i,j) denote the square at the ii-th row from the top and the
+// jj-th column from the left. For each ii and jj (1≤i≤H1≤i≤H, 1≤j≤W1≤j≤W),
+// Square (i,j)(i,j) is described by a character ai,jai,j. If ai,jai,j is .,
+// Square (i,j)(i,j) is an empty square; if ai,jai,j is #, Square (i,j)(i,j)
+// is a wall square. It is guaranteed that Squares (1,1)(1,1) and (H,W)(H,W)
+// are empty squares.Taro will start from Square (1,1)(1,1) and reach
+// (H,W)(H,W) by repeatedly moving right or down to an adjacent empty square.
+// Find the number of Taro's paths from Square (1,1)(1,1) to (H,W)(H,W).
+// As the answer can be extremely large, find the count modulo (1e9+7).
+
+
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -20,10 +33,6 @@ int main(){
   ios_base::sync_with_stdio(false);
   cin.tie(NULL);
   cout.tie(NULL);
-  #ifndef ONLINE_JUDGE
-  freopen("D:/CP/input.txt","r",stdin);
-  freopen("D:/CP/output.txt","w",stdout);
-  #endif
   int r,c;
   cin>>r>>c;
   vector<vector<char>> mat(r+1,vector<char>(c+1));
