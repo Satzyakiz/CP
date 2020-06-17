@@ -15,7 +15,44 @@ using namespace std;
 #define INF INT_MAX
 #define NEG_INF INT_MIN
 #define MOD 1000000007
-
+bool checkLeft(string &s,int i,int k){
+  for(int j=1; j<=k && (i-j) >= 0; j++){
+    if(s[i-j] == '1'){
+      return true;
+    }
+  }
+  return false;
+}
+bool checkRight(string &s,int i,int k){
+  for(int j=1; j<=k && (i+j)<s.size(); j++){
+    if(s[i+j] == '1'){
+      return true;
+    }
+  }
+  return false;
+}
+void solve(){
+  int n,k;
+  cin>>n>>k;
+  string s;
+  cin.ignore();
+  cin>>s;
+  int count = 0;
+  for(int i=0; i<n; i++){
+    if(s[i] == '1'){
+      i = i+k;
+    }else{
+      bool left = checkLeft(s,i,k);
+      bool right = checkRight(s,i,k);
+      if(left == false && right == false){
+        count++;
+        s[i] = '1';
+        i = i+k;
+      }
+    }
+  }
+  cout<<count<<endl;
+}
 int main(){
   ios_base::sync_with_stdio(false);
   cin.tie(NULL);
@@ -24,33 +61,9 @@ int main(){
   freopen("D:/CP/input.txt","r",stdin);
   freopen("D:/CP/output.txt","w",stdout);
   #endif
-  int r,c;
-  cin>>r>>c;
-  vector<vector<char>> mat(r+1,vector<char>(c+1));
-  vector<vector<ll>> dp(r+1,vector<ll>(c+1,0));
-  for(int i=1; i<=r; i++){
-    for(int j=1; j<=c; j++){
-      cin>>mat[i][j];
-    }
-  }
-  dp[1][1] = 1;
-  for(int i=2; i<=r; i++){
-    if(mat[i][1] != '#')
-      dp[i][1] = dp[i-1][1];
-  }
-  for(int j=2; j<=c; j++){
-    if(mat[1][j] != '#')
-      dp[1][j] = dp[1][j-1];
-  }
-  for(int i=2; i<=r; i++){
-    for(int j=2; j<=c; j++){
-      if(mat[i][j] != '#'){
-          dp[i][j] = (dp[i-1][j]+dp[i][j-1])%MOD;
-
-      }
-    }
-  }
-
-  cout<<dp[r][c]%MOD;
+  int t;
+  cin>>t;
+  while(t--)
+    solve();
   return 0;
 }
