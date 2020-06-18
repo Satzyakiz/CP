@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-#define ll unsigned long long
+#define ll long long
 #define dbl double
 #define endl "\n"
 #define fo(i,n) for(int i=0; i<n; i++)
