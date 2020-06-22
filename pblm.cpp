@@ -15,43 +15,35 @@ using namespace std;
 #define INF INT_MAX
 #define NEG_INF INT_MIN
 #define MOD 1000000007
-bool checkLeft(string &s,int i,int k){
-  for(int j=1; j<=k && (i-j) >= 0; j++){
-    if(s[i-j] == '1'){
-      return true;
-    }
-  }
-  return false;
-}
-bool checkRight(string &s,int i,int k){
-  for(int j=1; j<=k && (i+j)<s.size(); j++){
-    if(s[i+j] == '1'){
-      return true;
-    }
-  }
-  return false;
-}
 void solve(){
-  int n,k;
-  cin>>n>>k;
-  string s;
-  cin.ignore();
-  cin>>s;
-  int count = 0;
-  for(int i=0; i<n; i++){
-    if(s[i] == '1'){
-      i = i+k;
-    }else{
-      bool left = checkLeft(s,i,k);
-      bool right = checkRight(s,i,k);
-      if(left == false && right == false){
-        count++;
-        s[i] = '1';
-        i = i+k;
-      }
+    unordered_map<int,bool> um;
+    int n,b,m,x;
+    cin>>n>>m;
+    int count = 0,count2 = 0;
+    for(int i=0; i<n; i++){
+        cin>>x;
+        if(um.find(x) == um.end() && x > 0 && x < m)
+            count++;
+        um[x] = true;
+        count2++;
     }
-  }
-  cout<<count<<endl;
+    if(count == 0){
+        cout<<"-1\n";
+        return;
+    }
+    else if(count == m-1){
+        cout<<count2<<endl;
+    }else{
+        count = 0;
+        for(int i=1; i<m; i++){
+            if(um.find(i) != um.end())
+                count++;
+            else
+                break;
+        }
+        cout<<count<<endl;
+    }
+
 }
 int main(){
   ios_base::sync_with_stdio(false);
