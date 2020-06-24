@@ -15,7 +15,8 @@ int countLength(string s){
   for(int i=0; i<s.size(); i++){
     if(!stk.empty() && s[stk.top()] == '(' && s[i] == ')'){
         stk.pop();
-      if(stk.empty()){ // If stack is currentlu empty, it means all the characters till now
+      if(stk.empty()){
+         // If stack is currently empty, it means all the characters till now
         //form a perfect set of paranthesis, so we count from 0 to i as length
         //which is nothing but i+1
         count = max(count, i+1);

@@ -63,3 +63,6 @@ int maxCircularSum(int a[], int n)
     max_wrap = max_wrap + kadane(a, n);
     return (max_wrap > max_kadane)? max_wrap: max_kadane;
 }
+-5 -4 -3 -2 -1
+maxkadane : -1
+wrap: -15
