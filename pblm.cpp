@@ -16,34 +16,7 @@ using namespace std;
 #define NEG_INF INT_MIN
 #define MOD 1000000007
 void solve(){
-    unordered_map<int,bool> um;
-    int n,b,m,x;
-    cin>>n>>m;
-    int count = 0,count2 = 0;
-    for(int i=0; i<n; i++){
-        cin>>x;
-        if(um.find(x) == um.end() && x > 0 && x < m)
-            count++;
-        um[x] = true;
-        count2++;
-    }
-    if(count == 0){
-        cout<<"-1\n";
-        return;
-    }
-    else if(count == m-1){
-        cout<<count2<<endl;
-    }else{
-        count = 0;
-        for(int i=1; i<m; i++){
-            if(um.find(i) != um.end())
-                count++;
-            else
-                break;
-        }
-        cout<<count<<endl;
-    }
-
+    
 }
 int main(){
   ios_base::sync_with_stdio(false);
