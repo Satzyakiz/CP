@@ -1,22 +1,27 @@
 #include<bits/stdc++.h>
 using namespace std;
-
 #define ll long long
-#define dbl double
-#define endl "\n"
-#define fo(i,n) for(int i=0; i<n; i++)
-#define FOR(i,n,k) for(int i=0; i<n; i+=k)
-#define sFOR(i,s,n) for(int i=s; i<n; i++)
-#define vi vector<int>
-#define SORT(v) sort(v.begin(),v.end())
-#define REV(v) reverse(v.begin(),v.end())
-#define eb(x) emplace_back(x)
-#define UM unordered_map<int,int>
-#define INF INT_MAX
-#define NEG_INF INT_MIN
-#define MOD 1000000007
 void solve(){
-    
+    int n;
+    cin>>n;
+    string s;
+    cin>>s;
+    stack<char> stk;
+    n = n/2;
+    for(char c: s){
+        if(stk.size() == 0){
+            stk.push(c);
+        }
+        else if(c == ')' && stk.top() == '('){
+            stk.pop();
+            n--;
+        }
+        else{
+            stk.push(c);
+        }
+    }
+    cout<<n<<endl;
+
 }
 int main(){
   ios_base::sync_with_stdio(false);
