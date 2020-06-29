@@ -1,27 +1,23 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long
+vector<int> arr;
 void solve(){
-    int n;
+    arr.emplace_back(0);
+    int n,count = 1,x;
     cin>>n;
-    string s;
-    cin>>s;
-    stack<char> stk;
-    n = n/2;
-    for(char c: s){
-        if(stk.size() == 0){
-            stk.push(c);
-        }
-        else if(c == ')' && stk.top() == '('){
-            stk.pop();
-            n--;
-        }
-        else{
-            stk.push(c);
+    for(int i=0; i<n; i++){
+        cin>>x;
+        for(int j=0; j<x; j++){
+            arr.emplace_back(i+1);
         }
     }
-    cout<<n<<endl;
-
+    int m;
+    cin>>m;
+    for(int i=0; i<m; i++){
+        cin>>x;
+        cout<<arr[x]<<endl;
+    }
 }
 int main(){
   ios_base::sync_with_stdio(false);
@@ -31,9 +27,6 @@ int main(){
   freopen("D:/CP/input.txt","r",stdin);
   freopen("D:/CP/output.txt","w",stdout);
   #endif
-  int t;
-  cin>>t;
-  while(t--)
-    solve();
+  solve();
   return 0;
 }
