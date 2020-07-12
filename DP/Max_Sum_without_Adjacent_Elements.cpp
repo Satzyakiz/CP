@@ -21,6 +21,11 @@
 // Output 2:
 //     We will choose 3 and 5.
 
+//Approach:
+// Choose from the first or second row of 1st col and then move to the 3rd col
+// or
+// Choose from the second col
+
 int helper(vector<vector<int>> &A,unordered_map<int,int> &um,int j){
     if(j >= A[0].size())
         return 0;
