@@ -39,3 +39,36 @@ int change(int m, vector<int>& coins) {
         }
         return dp[n][m];
 }
+
+
+//O(n) space
+#include<bits/stdc++.h>
+using namespace std;
+
+int get(vector<int> &coins, int x){
+    vector<int> dp(x+1);
+    dp[0] = 1;
+    for(int i=0; i<coins.size(); i++){
+        for(int j=coins[i]; j<=x; j++){
+            dp[j] += dp[j-coins[i]];
+        }
+    }
+
+    return dp[x];
+}
+void solve(){
+    int n;
+    cin>>n;
+    vector<int> coins(n);
+    for(int i=0; i<n; i++) cin>>coins[i];
+    int s;
+    cin>>s;
+    cout<<get(coins,s)<<endl;
+}
+int main(){
+    int t;
+    cin>>t;
+    while(t--)
+        solve();
+    return 0;
+}
