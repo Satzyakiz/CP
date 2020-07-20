@@ -60,3 +60,45 @@ int largestAreaInHistogram(vector<int> heights){
   }
   return *max_element(area.begin(),area.end());
 }
+
+//Better Solution
+#include<bits/stdc++.h>
+using namespace std;
+int mah(vector<int> &arr){
+    int maxArea = -1,area = 0,i=0, n = arr.size(),top,k;
+    stack<int> s;
+    while(i<n){
+        if(s.empty() || arr[s.top()] <= arr[i]){
+            s.push(i++);
+        }else{
+            top = s.top();
+            s.pop();
+            k = s.empty() ? i : i - s.top() - 1;
+            area = arr[top] * k;
+            maxArea = max(area,maxArea);
+        }
+    }
+
+    while(!s.empty()){
+        top = s.top();
+        s.pop();
+        k = s.empty() ? i : i - s.top() - 1;
+        area = arr[top] * k;
+        maxArea = max(area,maxArea);
+    }
+    return maxArea;
+}
+void solve(){
+    int n;
+    cin>>n;
+    vector<int> arr(n);
+    for(int i=0; i<n; i++) cin>>arr[i];
+    cout<<mah(arr)<<endl;
+}
+int main(){
+    int t;
+    cin>>t;
+    while(t--)
+        solve();
+    return 0;
+}
