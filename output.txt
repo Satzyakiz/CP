@@ -1,6 +1,2 @@
-Yes
-Yes
-No
-Yes
-No
-Yes
+0
+127
