@@ -1,3 +1,5 @@
+//MCM variation
+
 // Given a boolean expression with following symbols.
 //
 // Symbols
